@@ -1,0 +1,34 @@
+#+TITLE: Pointer Cheat Sheet
+#+AUTHOR: Maximilian Groetsch
+#+STARTUP: showeverything
+#+PROPERTY: header-args :tangle cheat.c
+
+* Pointer Basics
++ Syntax
++ Adresse auslesen
++ Werte mit Pointern manipulieren
+
+#+begin_src C
+#include <stdio.h>
+
+int main(void)
+{
+    //Variabel initialisiern
+    int x = 0;
+    printf("%d %s", x , "\n");
+    //Adresse auslesen
+    int *pointer;
+    pointer = &x;
+    printf("%i %s", pointer, "\n");
+    //Werte mit Pointern manipulieren
+    *pointer = 1;
+    printf("%d %s", x, "\n");
+
+}
+
+#+end_src
+
+#+RESULTS:
+|          0 |
+| -848480948 |
+|          1 |
