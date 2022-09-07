@@ -7,7 +7,7 @@ int main(void)
 
     int *ptr;
     ptr = arr1;
-    while(*ptr > 0)
+    while(*ptr) //solange der Pointer-Wert > 0
     {
         printf("%i ", *ptr);
         ptr++;
