@@ -1,13 +1,3 @@
-#+TITLE: Pointer Cheat Sheet
-#+AUTHOR: Maximilian Groetsch
-#+STARTUP: showeverything
-
-* Pointer Basics
-+ Syntax
-+ Adresse auslesen
-+ Werte mit Pointern manipulieren
-
-#+begin_src C :tangle basicPointer.c
 #include <stdio.h>
 
 int main(void)
@@ -24,10 +14,3 @@ int main(void)
     printf("%d %s", x, "\n");
 
 }
-
-#+end_src
-
-#+RESULTS:
-|          0 |
-| -848480948 |
-|          1 |
