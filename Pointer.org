@@ -44,7 +44,7 @@ int main(void)
 
     int *ptr;
     ptr = arr1;
-    while(*ptr > 0)
+    while(*ptr) //solange der Pointer-Wert > 0
     {
         printf("%i ", *ptr);
         ptr++;
@@ -93,3 +93,31 @@ int main(void)
 | -30 | 29 | -28 | 27 | -26 | 25 | -24 | 23 | -22 | 21 |
 |   1 |  2 |   3 |  4 |   5 |  6 |   7 |  8 |   9 | 10 |
 | -30 | 29 | -28 | 27 | -26 | 25 | -24 | 23 | -22 | 21 |
+
+* Arrays, Pointer und Funktionen
+#+begin_src C :tangle functionXarray.c
+#include <stdio.h>
+
+static void foo(const int *arr)
+{
+    int *ptr = *arr;
+    ptr = arr;
+    while(*ptr)
+    {
+        printf("%i ", *ptr);
+        ptr++;
+
+    }
+}
+
+int main(void)
+{
+    int arr[6] = {1,2,3,4,5,0};
+    foo(arr);
+}
+#+end_src
+
+#+RESULTS:
+: 1 2 3 4 5
+
+* Zwei Arrays mergen
