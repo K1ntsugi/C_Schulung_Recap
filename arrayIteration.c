@@ -1,40 +1,3 @@
-#+TITLE: Pointer Cheat Sheet
-#+AUTHOR: Maximilian Groetsch
-#+STARTUP: showeverything
-
-* Pointer Basics
-+ Syntax
-+ Adresse auslesen
-+ Werte mit Pointern manipulieren
-
-#+begin_src C :tangle basicPointer.c
-#include <stdio.h>
-
-int main(void)
-{
-    //Variabel initialisiern
-    int x = 0;
-    printf("%d %s", x , "\n");
-    //Adresse auslesen
-    int *pointer;
-    pointer = &x;
-    printf("%i %s", pointer, "\n");
-    //Werte mit Pointern manipulieren
-    *pointer = 1;
-    printf("%d %s", x, "\n");
-
-}
-
-#+end_src
-
-#+RESULTS:
-|         0 |
-| 477380140 |
-|         1 |
-
-* Mit Pointer auf Arrays zugreifen
-
-#+begin_src C :tangle arrayIteration.c
 #include <stdio.h>
 
 int main(void)
@@ -86,10 +49,3 @@ int main(void)
     }
 
 }
-#+end_src
-
-#+RESULTS:
-|   1 |  2 |   3 |  4 |   5 |  6 |   7 |  8 |   9 | 10 |
-| -30 | 29 | -28 | 27 | -26 | 25 | -24 | 23 | -22 | 21 |
-|   1 |  2 |   3 |  4 |   5 |  6 |   7 |  8 |   9 | 10 |
-| -30 | 29 | -28 | 27 | -26 | 25 | -24 | 23 | -22 | 21 |
