@@ -28,9 +28,9 @@ int main(void)
 #+end_src
 
 #+RESULTS:
-|          0 |
-| -848480948 |
-|          1 |
+|         0 |
+| 477380140 |
+|         1 |
 
 * Mit Pointer auf Arrays zugreifen
 
@@ -40,7 +40,7 @@ int main(void)
 int main(void)
 {
     int arr1[11] = {1,2,3,4,5,6,7,8,9,10,0};
-    int arr2[11] = {10,11,9,8,7,6,5,4,3,2,1};
+    int arr2[11] = {10,30,29,28,27,26,25,24,23,22,21};
 
     int *ptr;
     ptr = arr1;
@@ -54,18 +54,21 @@ int main(void)
     printf("\n");
     //**********************************************
 
+    int idx = 0;
     ptr = arr2;
     int len = *ptr;
     ptr++;
-
-    while(ptr <= len)
+    while(idx < len)
     {
-        printf("%i ", *ptr);
-        ptr++;
+       printf("%i ", *ptr);
+       ptr++;
+       idx++;
     }
+
 
 }
 #+end_src
 
 #+RESULTS:
-: 1 2 3 4 5 6 7 8 9 10
+|  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 |
+| 30 | 29 | 28 | 27 | 26 | 25 | 24 | 23 | 22 | 21 |
