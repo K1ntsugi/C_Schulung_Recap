@@ -100,7 +100,7 @@ int main(void)
 
 static void foo(const int *arr)
 {
-    int *ptr = *arr;
+    int *ptr;
     ptr = arr;
     while(*ptr)
     {
@@ -121,3 +121,91 @@ int main(void)
 : 1 2 3 4 5
 
 * Zwei Arrays mergen
+#+begin_src C :tangle mergeArrs.c
+#include <stdio.h>
+
+static int* merge(const int *arr1, const int *arr2);
+static void  printArray(const int *res);
+
+int main(void)
+{
+    int array1[9] = {2,3,4,6,8,10,11,12,0};
+    int array2[9] = {3,4,5,7,8,9,11,13,0};
+    int result[20];
+
+    result = merge(array1, array2);
+
+    printArray(result);
+
+}
+
+static int* merge(const int *arr1, const int *arr2)
+{
+    int tmp[20];
+    int *ptr1;
+    int *ptr2;
+    int *resPtr;
+
+    ptr1 = arr1;
+    ptr2 = arr2;
+    resPtr = tmp;
+
+    while(true)
+    {
+        if(*ptr1 < *ptr2) {
+            *resPtr = *ptr1;
+            resPtr++;
+            ptr1++;
+        }
+
+        if(*ptr1 > *ptr2) {
+            *resPtr = *ptr2;
+            resPtr++;
+            ptr2++;
+        }
+
+        if(*ptr1 == *ptr2) {
+            ptr1++;
+            ptr2++;
+        }
+
+        while(*ptr1 == 0 && *ptr2){
+            if(!*ptr2){
+                break;
+            }
+
+            ,*tmp = *ptr2;
+            tmp++;
+            ptr2++;
+
+        }
+
+        while(*ptr1 && *ptr2 == 0){
+            if(!ptr1){
+                break;
+            }
+
+            ,*tmp = *ptr1;
+            tmp++;
+            ptr1++;
+        }
+
+
+    }
+
+    return tmp;
+}
+
+static void printArray(const int *res)
+{
+    int *ptr = res;
+    ptr = res;
+    while(*ptr)
+    {
+        printf("%i ", *ptr);
+        ptr++;
+    }
+}
+#+end_src
+
+#+RESULTS:
