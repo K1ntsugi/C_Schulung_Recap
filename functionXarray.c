@@ -2,7 +2,7 @@
 
 static void foo(const int *arr)
 {
-    int *ptr = *arr;
+    int *ptr;
     ptr = arr;
     while(*ptr)
     {

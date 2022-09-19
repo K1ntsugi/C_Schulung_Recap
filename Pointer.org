@@ -28,9 +28,9 @@ int main(void)
 #+end_src
 
 #+RESULTS:
-|         0 |
-| 477380140 |
-|         1 |
+|      0 |
+| -13356 |
+|      1 |
 
 * Mit Pointer auf Arrays zugreifen
 
@@ -124,88 +124,70 @@ int main(void)
 #+begin_src C :tangle mergeArrs.c
 #include <stdio.h>
 
-static int* merge(const int *arr1, const int *arr2);
-static void  printArray(const int *res);
+static void merge(int *arr1, const int *arr2, int *result);
+static int compareTo(int a, int b);
+static void printArray(const int *res);
 
 int main(void)
 {
-    int array1[9] = {2,3,4,6,8,10,11,12,0};
-    int array2[9] = {3,4,5,7,8,9,11,13,0};
-    int result[20];
+    int array1[9] = {2, 3, 4, 6, 8, 10, 11, 12, 0};
+    int array2[9] = {3, 4, 5, 7, 8, 9, 11, 13, 0};
+    int result[17];
 
-    result = merge(array1, array2);
+    merge(array1, array2, result);
 
     printArray(result);
-
 }
 
-static int* merge(const int *arr1, const int *arr2)
+static void merge(int *arr1, const int *arr2, int *result)
 {
-    int tmp[20];
-    int *ptr1;
-    int *ptr2;
-    int *resPtr;
+    int i = 0;
+    int decide, j, k;
 
-    ptr1 = arr1;
-    ptr2 = arr2;
-    resPtr = tmp;
-
-    while(true)
+    j = 0, k = 0;
+    for (i = 0; i < 13; i++)
     {
-        if(*ptr1 < *ptr2) {
-            *resPtr = *ptr1;
-            resPtr++;
-            ptr1++;
+        decide = compareTo(arr1[j], arr2[k]);
+        if (decide <= 0)
+        {
+            result[i] = arr1[j++];
+            if (decide == 0)
+                k++;
         }
-
-        if(*ptr1 > *ptr2) {
-            *resPtr = *ptr2;
-            resPtr++;
-            ptr2++;
+        else
+        {
+            result[i] = arr2[k++];
         }
+    }
+}
 
-        if(*ptr1 == *ptr2) {
-            ptr1++;
-            ptr2++;
-        }
-
-        while(*ptr1 == 0 && *ptr2){
-            if(!*ptr2){
-                break;
-            }
-
-            ,*tmp = *ptr2;
-            tmp++;
-            ptr2++;
-
-        }
-
-        while(*ptr1 && *ptr2 == 0){
-            if(!ptr1){
-                break;
-            }
-
-            ,*tmp = *ptr1;
-            tmp++;
-            ptr1++;
-        }
-
-
+static int compareTo(int a, int b)
+{
+    if (a == b)
+    {
+        return 0;
     }
 
-    return tmp;
+    if (a < b)
+    {
+        return -1;
+    }
+
+    if (a > b)
+    {
+        return 1;
+    }
 }
 
 static void printArray(const int *res)
 {
-    int *ptr = res;
-    ptr = res;
-    while(*ptr)
+    while (*res)
     {
-        printf("%i ", *ptr);
-        ptr++;
+        printf("%i ", *res);
+        res++;
     }
 }
 #+end_src
 
 #+RESULTS:
+: 2 3 4 5 6 7 8 9 10 11 12
